@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <title>Standard Template</title>
+  <style>
+    .card-header {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <!-- Card 1 -->
+        <div class="card">
+          <div id="headerOne" class="card-header bg-primary text-white" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+            <h5 class="mb-0">
+              <i class="fa fa-caret-down" aria-hidden="true"></i> Order Edit
+            </h5>
+          </div>
+          <div id="collapseOne" class="collapse show" aria-labelledby="headerOne" data-bs-parent="#accordion">
+            <div class="card-body">
+              Card Body 1
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card">
+          <div id="headerTwo" class="card-header bg-dark text-white" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+            <h5 class="mb-0">
+              <i class="fa fa-caret-up" aria-hidden="true"></i> Order Tools
+            </h5>
+          </div>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headerTwo" data-bs-parent="#accordion">
+            <div class="card-body">
+              Card Body 2
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+          <div id="headerThree" class="card-header bg-dark text-white" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+            <h5 class="mb-0">
+              <i class="fa fa-caret-up" aria-hidden="true"></i> Order General Ledger
+            </h5>
+          </div>
+          <div id="collapseThree" class="collapse" aria-labelledby="headerThree" data-bs-parent="#accordion">
+            <div class="card-body">
+              Card Body 3
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <!-- Bootstrap 5.3 JS (with Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      // Toggle caret icon and header color for Card 1
+      $('#collapseOne').on('show.bs.collapse', function () {
+        $('#headerOne').removeClass('bg-dark').addClass('bg-primary');
+        $('#headerOne i').removeClass('fa-caret-up').addClass('fa-caret-down');
+      }).on('hide.bs.collapse', function () {
+        $('#headerOne').removeClass('bg-primary').addClass('bg-dark');
+        $('#headerOne i').removeClass('fa-caret-down').addClass('fa-caret-up');
+      });
+
+      // Toggle caret icon and header color for Card 2
+      $('#collapseTwo').on('show.bs.collapse', function () {
+        $('#headerTwo').removeClass('bg-dark').addClass('bg-primary');
+        $('#headerTwo i').removeClass('fa-caret-up').addClass('fa-caret-down');
+      }).on('hide.bs.collapse', function () {
+        $('#headerTwo').removeClass('bg-primary').addClass('bg-dark');
+        $('#headerTwo i').removeClass('fa-caret-down').addClass('fa-caret-up');
+      });
+
+      // Toggle caret icon and header color for Card 3
+      $('#collapseThree').on('show.bs.collapse', function () {
+        $('#headerThree').removeClass('bg-dark').addClass('bg-primary');
+        $('#headerThree i').removeClass('fa-caret-up').addClass('fa-caret-down');
+      }).on('hide.bs.collapse', function () {
+        $('#headerThree').removeClass('bg-primary').addClass('bg-dark');
+        $('#headerThree i').removeClass('fa-caret-down').addClass('fa-caret-up');
+      });
+    });
+  </script>
+</body>
+</html>

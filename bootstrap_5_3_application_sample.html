@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Job Application</title>
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    .required:after {
+      content: "*";
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <!-- Modal -->
+  <div class="modal fade" id="agreementModal" tabindex="-1" aria-labelledby="agreementModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="agreementModalLabel">Notice</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Please be advised that this page is being monitored. You are required to enter truthful information. By using this website, you agree to our <a href="#" target="_blank">Terms and Conditions</a> and <a href="#" target="_blank">Privacy Policy</a>.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="agreeButton" data-bs-dismiss="modal">I Agree</button>
+          <button type="button" class="btn btn-danger" id="disagreeButton" data-bs-dismiss="modal">I Disagree</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2 class="mt-4">Online Job Application</h2>
+    <div id="errorMessage"></div>
+    <form id="applicationForm">
+      <!-- Personal Data -->
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <label for="lastName" class="required">Last Name:</label>
+          <input type="text" class="form-control" id="lastName" placeholder="Enter Last Name" name="lastName">
+        </div>
+        <div class="col-md-4">
+          <label for="firstName" class="required">First Name:</label>
+          <input type="text" class="form-control" id="firstName" placeholder="Enter First Name" name="firstName">
+        </div>
+        <div class="col-md-4">
+          <label for="middleName">Middle Name:</label>
+          <input type="text" class="form-control" id="middleName" placeholder="Enter Middle Name" name="middleName">
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-8">
+          <label for="streetAddress" class="required">Street Address:</label>
+          <input type="text" class="form-control" id="streetAddress" placeholder="Enter Street Address" name="streetAddress">
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <label for="city" class="required">City:</label>
+          <input type="text" class="form-control" id="city" placeholder="Enter City" name="city">
+        </div>
+        <div class="col-md-4">
+          <label for="state" class="required">State:</label>
+          <select class="form-control" id="state" name="state">
+            <option value="">-- Please Select State --</option>
+            <option value="AL">Alabama</option>
+            <option value="AK">Alaska</option>
+            <option value="AZ">Arizona</option>
+            <option value="AR">Arkansas</option>
+            <option value="CA">California</option>
+            <option value="CO">Colorado</option>
+            <option value="CT">Connecticut</option>
+            <option value="DE">Delaware</option>
+            <option value="FL">Florida</option>
+            <option value="GA">Georgia</option>
+            <option value="HI">Hawaii</option>
+            <option value="ID">Idaho</option>
+            <option value="IL">Illinois</option>
+            <option value="IN">Indiana</option>
+            <option value="IA">Iowa</option>
+            <option value="KS">Kansas</option>
+            <option value="KY">Kentucky</option>
+            <option value="LA">Louisiana</option>
+            <option value="ME">Maine</option>
+            <option value="MD">Maryland</option>
+            <option value="MA">Massachusetts</option>
+            <option value="MI">Michigan</option>
+            <option value="MN">Minnesota</option>
+            <option value="MS">Mississippi</option>
+            <option value="MO">Missouri</option>
+            <option value="MT">Montana</option>
+            <option value="NE">Nebraska</option>
+            <option value="NV">Nevada</option>
+            <option value="NH">New Hampshire</option>
+            <option value="NJ">New Jersey</option>
+            <option value="NM">New Mexico</option>
+            <option value="NY">New York</option>
+            <option value="NC">North Carolina</option>
+            <option value="ND">North Dakota</option>
+            <option value="OH">Ohio</option>
+            <option value="OK">Oklahoma</option>
+            <option value="OR">Oregon</option>
+            <option value="PA">Pennsylvania</option>
+            <option value="RI">Rhode Island</option>
+            <option value="SC">South Carolina</option>
+            <option value="SD">South Dakota</option>
+            <option value="TN">Tennessee</option>
+            <option value="TX">Texas</option>
+            <option value="UT">Utah</option>
+            <option value="VT">Vermont</option>
+            <option value="VA">Virginia</option>
+            <option value="WA">Washington</option>
+            <option value="WV">West Virginia</option>
+            <option value="WI">Wisconsin</option>
+            <option value="WY">Wyoming</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="zip" class="required">Zip Code:</label>
+          <input type="text" class="form-control" id="zip" placeholder="Enter Zip Code" name="zip">
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="cellPhone" class="required">Cell Phone:</label>
+          <input type="tel" class="form-control" id="cellPhone" placeholder="Enter Cell Phone Number" name="cellPhone">
+        </div>
+        <div class="col-md-6">
+          <label for="startDate" class="required">Start Date:</label>
+          <input type="date" class="form-control" id="startDate" name="startDate">
+        </div>
+      </div>
+
+      <!-- Position Information -->
+      <div class="form-group mb-3">
+        <label class="required">Position Type:</label>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="fullTime" name="positionType" value="Full Time">
+          <label class="form-check-label" for="fullTime">Full Time</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="partTime" name="positionType" value="Part Time">
+          <label class="form-check-label" for="partTime">Part Time</label>
+        </div>
+      </div>
+      <div class="form-group mb-3">
+        <label class="required">Have you ever been convicted of a felony?</label>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" id="felonyYes" name="felony" value="yes">
+          <label class="form-check-label" for="felonyYes">Yes</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" id="felonyNo" name="felony" value="no">
+          <label class="form-check-label" for="felonyNo">No</label>
+        </div>
+      </div>
+      <div class="form-group mb-3">
+        <label class="required">Can you perform these essential functions of the job with or without reasonable accommodation?</label>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" id="accommodationYes" name="accommodation" value="yes">
+          <label class="form-check-label" for="accommodationYes">Yes</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" id="accommodationNo" name="accommodation" value="no">
+          <label class="form-check-label" for="accommodationNo">No</label>
+        </div>
+      </div>
+      <span>* required</span>
+      <br />
+      <button type="submit" class="btn btn-primary float-end">
+        <i class="fas fa-paper-plane me-2"></i>Submit
+      </button>
+    </form>
+  </div>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <!-- Bootstrap 5.3 JS (with Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script>
+    $(document).ready(function() {
+      // Show the agreement modal on page load
+      const agreementModal = new bootstrap.Modal(document.getElementById('agreementModal'));
+      agreementModal.show();
+
+      // Disable form if user disagrees
+      $('#disagreeButton').click(function() {
+        $('#applicationForm :input').prop('disabled', true);
+      });
+
+      // Form validation and submission
+      $('#applicationForm').submit(function(event) {
+        event.preventDefault(); // Prevent form submission
+
+        // Reset error message
+        $('#errorMessage').html('');
+
+        // Regular expressions for validation
+        const nameRegex = /^[a-zA-Z\s'-]+$/;
+        const numberRegex = /^\d+$/;
+        const phoneRegex = /^(\()?\d{3}(\))?[-\s]?\d{3}[-\s]?\d{4}$/;
+
+        // Get form data
+        const formData = $(this).serializeArray();
+        const formObject = {};
+
+        // Convert form data to an object and sanitize input
+        $.each(formData, function(index, obj) {
+          formObject[obj.name] = $('<div/>').text(obj.value).html();
+        });
+
+        // Validate form data
+        let isValid = true;
+        $('input, select').removeClass('is-invalid');
+
+        for (const key in formObject) {
+          const value = formObject[key];
+          const $input = $(`[name="${key}"]`);
+
+          switch (key) {
+            case 'lastName':
+            case 'firstName':
+            case 'streetAddress':
+            case 'city':
+              if (!value) {
+                isValid = false;
+                $input.addClass('is-invalid');
+              } else if ((key === 'lastName' || key === 'firstName') && !nameRegex.test(value)) {
+                isValid = false;
+                $input.addClass('is-invalid');
+                $('#errorMessage').html('<div class="alert alert-danger">Invalid name format. Names should only contain letters, spaces, hyphens, and apostrophes.</div>');
+              }
+              break;
+            case 'state':
+              if (!value) {
+                isValid = false;
+                $input.addClass('is-invalid');
+              }
+              break;
+            case 'zip':
+              if (!value || !numberRegex.test(value)) {
+                isValid = false;
+                $input.addClass('is-invalid');
+                $('#errorMessage').html('<div class="alert alert-danger">Invalid format for numeric fields. Only numbers are allowed.</div>');
+              }
+              break;
+            case 'cellPhone':
+              if (!value || !phoneRegex.test(value)) {
+                isValid = false;
+                $input.addClass('is-invalid');
+                $('#errorMessage').html('<div class="alert alert-danger">Invalid phone number format. Please use the format (123) 456-7890 or 123-456-7890.</div>');
+              }
+              break;
+            case 'startDate':
+              if (!value) {
+                isValid = false;
+                $input.addClass('is-invalid');
+              }
+              break;
+            case 'positionType':
+            case 'felony':
+            case 'accommodation':
+              if (!value) {
+                isValid = false;
+                $input.addClass('is-invalid');
+              }
+              break;
+          }
+        }
+
+        // If form is valid, submit or perform desired action
+        if (isValid) {
+          console.log(JSON.stringify(formObject)); // Log form data to console
+          alert('Form submitted successfully!'); // Replace with actual submission logic
+        } else {
+          $('#errorMessage').html('<div class="alert alert-danger">Please fill out all required fields correctly.</div>');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
